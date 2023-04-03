@@ -22,7 +22,7 @@ void pop() { //Fungsi pop untuk mengeluarkan elemen teratas dari stack.
     top--; // kurangi top untuk mengeluarkan elemen teratas
 }
 
-void display() {
+void display() { // Fungsi untuk menampilkan isi stack
     if (top == -1) { // mengecek apakah stack kosong
         cout << "Stack kosong\n" << endl;
         return;

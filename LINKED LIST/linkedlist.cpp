@@ -45,6 +45,35 @@ void Linkedlist::insertAfter(int key, int input){
 	currentNode->next = tmp;
 }
 
+        
+void Linkedlist::deleteFromHead(){
+	
+	if (head==NULL)
+	return; // linked list kosong
+	
+	Node* temp = head; 
+	head = head -> next; 
+	delete temp; 
+}
+
+void Linkedlist::deleteFromTail(){
+    if (head == NULL) { // linked list kosong
+        return;
+    }
+    if (head == tail) { 
+        delete head;
+        head = NULL;
+        tail = NULL;
+        return;
+    }
+    Node* currentNode = head;
+    while (currentNode->next != tail) {
+        currentNode = currentNode->next;
+    }
+    delete tail;
+    tail = currentNode;
+    tail->next = NULL; // perbarui pointer next pada node tail
+}
 
 void Linkedlist :: printALL(){
 	
@@ -53,5 +82,7 @@ void Linkedlist :: printALL(){
 		cout << tmp->value << "->"; 
 		tmp = tmp->next; 
 	}
+	
+	
 	cout << endl; 
 }; 

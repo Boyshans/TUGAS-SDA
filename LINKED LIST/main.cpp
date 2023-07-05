@@ -31,8 +31,8 @@ int main(int argc, char** argv) {
 
     Linkedlist list3;
     list3.insertToHead(10);
-    list3.insertAfter(10, 20);
-    list3.insertAfter(20, 30);
+    list3.insertAfter(10,20);
+    list3.insertAfter(20,30);
     cout << " === Insert After ==="<< endl; 
     cout << "head: " << list3.head->value << endl;
     cout << "Tail: " << list3.tail->value << endl;
@@ -68,10 +68,31 @@ int main(int argc, char** argv) {
     cout << endl; 
     
     list5.deleteFromTail(); 
-     cout <<"head: " << list5.head-> value << endl; 
+    cout <<"head: " << list5.head-> value << endl; 
     cout << "tail: " << list5.tail-> value << endl; 
     list5.printALL(); 
     cout<< endl; 
+    
+    
+  	Linkedlist list6; 
+    list6.insertToHead(10);
+    list6.insertToHead(20);
+    list6.insertToHead(30);
+    
+    cout << " === Delete By Value ===" << endl;
+    cout << "Before deletion:" << endl;
+    cout <<"head: " << list6.head-> value << endl; 
+    cout << "tail: " << list6.tail-> value << endl; 
+    list6.printALL();
+    cout<<endl; 
+    
+    cout << "===Deleting value 20===" << endl;
+    list6.deleteByValue(20);
+    cout<<endl;
+    
+    cout << "After deletion:" << endl;
+    list6.printALL();
+	cout << endl; 
     return 0;
+    
 }
-

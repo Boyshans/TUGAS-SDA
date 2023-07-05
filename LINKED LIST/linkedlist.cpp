@@ -16,45 +16,56 @@ void Linkedlist :: insertToHead (int input){
 }
 
 void Linkedlist::insertToTail(int input) {
-    Node *newNode = new Node();
+    Node* newNode = new Node();
     newNode->value = input;
-    tail->next = newNode;
-	tail = newNode;
+    newNode->next = NULL;
+
+    if (tail == NULL) {
+        // Jika linked list masih kosong, atur head dan tail ke newNode
+        head = newNode;
+        tail = newNode;
+    } else {
+        tail->next = newNode;
+        tail = newNode;
+    }
+}
+
+
+void Linkedlist::insertAfter(int key, int input) {
+    Node* newNode = new Node();
+    newNode->value = input;
+
+    Node* currentNode = head;
+    while (currentNode != NULL && currentNode->value != key) {
+        currentNode = currentNode->next;
     }
 
-void Linkedlist::insertAfter(int key, int input){
-	
-	Node *newNode = new Node();
-	newNode->value = key;
-	
-	Node *tmp = new Node();
-	tmp->value = input;
+    if (currentNode == NULL) {
+        // Node dengan nilai key tidak ditemukan
+        delete newNode;
+        return;
+    }
 
-	Node *currentNode = head;
-	while (currentNode != NULL && currentNode->value != input) {
-    currentNode = currentNode->next;
-	}
-
-	if (currentNode == NULL) {
-    // Node dengan nilai input2 tidak ditemukan
-    delete tmp;
-    return;
-	}
-	
-	tmp->next = currentNode->next;
-	currentNode->next = tmp;
+    newNode->next = currentNode->next;
+    currentNode->next = newNode;
+    if (currentNode == tail) {
+        tail = newNode;
+    }
 }
 
-        
-void Linkedlist::deleteFromHead(){
-	
-	if (head==NULL)
-	return; // linked list kosong
-	
-	Node* temp = head; 
-	head = head -> next; 
-	delete temp; 
+
+
+void Linkedlist::deleteFromHead() {
+    if (head == NULL)
+        return; // linked list kosong
+    Node* temp = head;
+    head = head->next;
+    delete temp;
+
+    if (head == NULL) // jika linked list kosong setelah menghapus head
+        tail = NULL;  // atur tail menjadi NULL
 }
+
 
 void Linkedlist::deleteFromTail(){
     if (head == NULL) { // linked list kosong

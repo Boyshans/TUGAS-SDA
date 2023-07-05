@@ -86,6 +86,39 @@ void Linkedlist::deleteFromTail(){
     tail->next = NULL; // perbarui pointer next pada node tail
 }
 
+void Linkedlist::deleteByValue(int input)
+{
+	Node* tmpdel = NULL;
+	Node* tmp = head;
+
+	while (tmp != NULL && tmp->value != input)
+	{
+		tmpdel = tmp;
+		tmp = tmp->next;
+ }
+
+	if (tmp != NULL)
+	{
+		if (tmp == head)
+		{
+			head = tmp->next;
+		}
+		else
+		{
+			tmpdel->next = tmp->next;
+		}
+
+		if (tmp == tail)
+		{
+			tail = tmpdel;
+		}
+
+		delete tmp;
+	}
+
+}
+
+
 void Linkedlist :: printALL(){
 	
 	Node *tmp = head; 
